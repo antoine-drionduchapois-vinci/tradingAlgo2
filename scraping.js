@@ -3,7 +3,7 @@ const {default: yahooStockAPI} = require("yahoo-stock-api");
 
 async function index() {
     //Regarde sur Stocktwits stock à prendre
-    return 'TTOO';
+    return 'AMZN';
 }
 
 async function dump() {

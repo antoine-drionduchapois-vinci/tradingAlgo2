@@ -2,7 +2,9 @@ const scrapeData = require('./scraping');
 
 
 async function main() {
+
     const index = await scrapeData.index();
+    console.log("Calculating value of " + index + " :");
     const dump = await scrapeData.dump();
     const sentiment = await scrapeData.sentiment();
     const tradingVolume = await scrapeData.tradingVolume();
@@ -13,7 +15,7 @@ async function main() {
 
     const result = processData(index, dump, sentiment, tradingVolume, messageVolume, dayMonth, dayWeek);
     console.log(index + " " + result.decision + " " + result.value + "/6");
-    //await tradingAlgorithm();
+
 }
 
 
@@ -21,7 +23,7 @@ function processData(index, dump, sentiment, tradingVolume, messageVolume, dayMo
 
     const value = dump + sentiment + tradingVolume + messageVolume + dayMonth + dayWeek;
 
-    let decision = "PASS";
+    let decision = "NO BUY";
     if (value >= 4) {
         decision = "BUY";
     }
