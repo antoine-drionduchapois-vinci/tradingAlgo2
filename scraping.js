@@ -35,6 +35,8 @@ async function sentiment() {
 
 
         console.log(elements.length);
+        //Index 0 = sentiment
+        // index 1 = message volume
         console.log(elements[0]);
 
 
