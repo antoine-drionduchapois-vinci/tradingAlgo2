@@ -29,25 +29,9 @@ function processData(index, dump, sentiment, tradingVolume, messageVolume, dayMo
     return {decision, value};
 }
 
-async function tradingAlgorithm() {
-    const symbol = await scrapeData.index();
-    // Implement your trading algorithm logic here
-    const yahoo = new yahooStockAPI();
-    const startDate = new Date();
-    const endDate = new Date();
 
+main().then();
 
-    const response = await yahoo.getHistoricalPrices({startDate, endDate, symbol, frequency: '1d',});
-
-    console.log( symbol + ' Historical Prices:', response.response);
-    return response;
-
-}
-
-
-
-main();
-module.exports = tradingAlgorithm;
 
 
 

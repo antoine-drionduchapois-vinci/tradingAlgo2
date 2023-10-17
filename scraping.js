@@ -8,7 +8,7 @@ async function index() {
 
 async function dump() {
     //Regarde si dump à l'ouverture
-    // fait appel à l'api de yahoo et va regarder si prix à l'ouverture plus bas qu'à 9h50
+    // fait appel à l'api de yahoo et va regarder si prix à l'ouverture plus haut qu'à 9h50
     return 1;
 }
 
