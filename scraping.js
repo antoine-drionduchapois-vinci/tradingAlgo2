@@ -3,7 +3,7 @@ const {default: yahooStockAPI} = require("yahoo-stock-api");
 
 async function index() {
     //Regarde sur Stocktwits stock à prendre
-    return 'TPST';
+    return 'AMZN';
 }
 
 async function dump() {
@@ -32,13 +32,16 @@ async function sentiment() {
 
 
         // Extract text content from all selected elements
+        const elementHTML = await elements[0].evaluate(element => element.innerHTML);
 
+        const numericValue = parseInt(elementHTML, 10);
 
-        console.log(elements.length);
-        //Index 0 = sentiment
-        // index 1 = message volume
-        console.log(elements[0]);
-
+        let sentimentValue = 0;
+        if (numericValue > 80){
+            sentimentValue = 2;
+        }
+        console.log("DONE")
+        return sentimentValue;
 
 
     } catch (error) {
@@ -46,8 +49,8 @@ async function sentiment() {
     } finally {
         await browser.close();
     }
-    console.log("DONE")
-    return 1;
+
+
 
 
 }
@@ -74,6 +77,43 @@ async function tradingVolume() {
 
 async function messageVolume() {
     //Regarde message volume
+    console.log("Calculating message volume ")
+    //Regarde quel est le sentiment sur Stocktwits
+    const browser = await puppeteer.launch({
+        headless: "new",
+        defaultViewport: null,
+    });
+    const page = await browser.newPage();
+
+    try {
+        const symbol = await index(); // Get the symbol from the index() function
+        const url = `https://stocktwits.com/symbol/${symbol}`;
+        await page.goto(url);
+
+        // Use the `page.$$` function to select all elements with the specified class
+        const elements = await page.$$('[class*="CommunitySentimentGauge_score__b2yOx"]');
+
+
+        // Extract text content from all selected elements
+        const elementHTML = await elements[1].evaluate(element => element.innerHTML);
+
+        const numericValue = parseInt(elementHTML, 10);
+
+        let sentimentValue = 0;
+        if (numericValue > 80){
+            sentimentValue = 2;
+        }
+        console.log("DONE")
+        return sentimentValue;
+
+
+    } catch (error) {
+        console.error('An error occurred:', error);
+    } finally {
+        await browser.close();
+    }
+
+
     return 1;
 }
 
