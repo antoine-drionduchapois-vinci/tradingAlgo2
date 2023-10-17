@@ -3,14 +3,14 @@ const {default: yahooStockAPI} = require("yahoo-stock-api");
 
 async function index() {
     //Regarde sur Stocktwits stock à prendre
-    return 'AMZN';
+    return 'TTOO';
 }
 
 async function dump() {
     //Regarde si dump à l'ouverture
     // fait appel à l'api de yahoo et va regarder si prix à l'ouverture plus haut qu'à 9h50
 
-    return 1;
+    return 0;
 }
 
 async function sentiment() {
