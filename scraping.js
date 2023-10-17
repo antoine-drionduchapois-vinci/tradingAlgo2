@@ -3,7 +3,7 @@ const {default: yahooStockAPI} = require("yahoo-stock-api");
 
 async function index() {
     //Regarde sur Stocktwits stock à prendre
-    return 'AMZN';
+    return 'TPST';
 }
 
 async function dump() {
@@ -28,13 +28,14 @@ async function sentiment() {
         await page.goto(url);
 
         // Use the `page.$$` function to select all elements with the specified class
-        const elements = await page.$$('.st_2Uzv9Dd');
+        const elements = await page.$$('[class*="CommunitySentimentGauge_score__b2yOx"]');
+
 
         // Extract text content from all selected elements
 
 
-        //console.log(elements);
-
+        console.log(elements.length);
+        console.log(elements[0]);
 
 
 
