@@ -1,5 +1,5 @@
 const scrapeData = require('./scraping');
-const yahooStockAPI = require('yahoo-stock-api').default;
+
 
 async function main() {
     const index = await scrapeData.index();
@@ -12,7 +12,7 @@ async function main() {
 
 
     const result = processData(index, dump, sentiment, tradingVolume, messageVolume, dayMonth, dayWeek);
-    console.log(index + " " + result.decision + " " + result.value);
+    console.log(index + " " + result.decision + " " + result.value + "/6");
     //await tradingAlgorithm();
 }
 
